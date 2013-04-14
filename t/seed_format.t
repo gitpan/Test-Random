@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# Test that the random seed is displayed when tests are run but the plan was forgotten
+# Test that the random seed is displayed correctly
 
 use strict;
 use warnings;
@@ -25,10 +25,12 @@ $tb->output( \$output{tap} );
 $tb->failure_output( \$output{err} );
 $tb->todo_output( \$output{todo} );
 
+$tb->plan( tests => 1 );
 pass("Passing test");
 
 END {
     $test->plan( tests => 2 );
-    $test->unlike( $output{tap}, qr/TEST_RANDOM_SEED/ );
-    $test->like  ( $output{err}, qr/TEST_RANDOM_SEED/ );
+    $test->like( $output{tap}, qr/TEST_RANDOM_SEED=\d+/ );
+    $test->unlike( $output{tap}, qr/TEST_RANDOM_SEED=\d+\.\d+/ );
+    $test->note($output{tap});
 }
