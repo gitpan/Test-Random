@@ -33,7 +33,7 @@
    "provides" : {
       "Test::Random" : {
          "file" : "lib/Test/Random.pm",
-         "version" : "20130414"
+         "version" : "20130427"
       }
    },
    "release_status" : "stable",
@@ -49,5 +49,5 @@
          "url" : "http://github.com/schwern/Test-Random/tree/master"
       }
    },
-   "version" : "20130414"
+   "version" : "20130427"
 }

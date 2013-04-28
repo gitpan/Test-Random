@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Config;
 
-our $VERSION = '20130414';
+our $VERSION = '20130427';
 
 my $Seed = defined $ENV{TEST_RANDOM_SEED} ? $ENV{TEST_RANDOM_SEED} : _get_seed();
 
@@ -33,7 +33,7 @@ sub _test_was_successful {
     my $tb = shift;
 
     if( $tb->can("history") ) {
-        return $tb->history->can_succeed;
+        return $tb->history->test_was_successful;
     }
     else {
         return $tb->is_passing;
